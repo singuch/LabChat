@@ -11,17 +11,25 @@
     <h1>Chatty server</h1>
     
     <script type="text/x-handlebars">
+        Name:
+        {{view Chat.personView id="person" type="text" placeholder="Please enter your name"}}
+        <br />
+        Message:
+        {{view Chat.messageView id="message" type="text" placeholder="Type a message and press <ENTER>" }}
+    </script>
+    
+    <script type="text/x-handlebars">
+        {{#collection contentBinding="Chat.pending" tagName="div"}}
+        <span class='name'>{{content}} is typing...</span>
+        {{/collection}}
+    </script>
+    
+    <script type="text/x-handlebars">
         {{#collection contentBinding="Chat.messages" tagName="div"}}
             <span class='time'>[{{content.time}}]</span>
             <span class='name'>{{content.person}}</span>:
             <span class='text'>{{content.message}}</span>
         {{/collection}}
     </script>
-    
-    
-    
-    
-    
-    
 </body>
 </html>
